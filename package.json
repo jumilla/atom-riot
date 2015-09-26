@@ -2,7 +2,7 @@
   "name": "riot",
   "main": "./lib/riot.js",
   "version": "0.2.0",
-  "description": "A short description of your package",
+  "description": "Riot.js auto compile.",
   "keywords": [],
   "repository": "https://github.com/jumilla/atom-riot",
   "license": "MIT",

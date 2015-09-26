@@ -40,7 +40,7 @@ function compileRiot(sourcePath) {
     let ext = (filePath) => {
         for (let ext of ['riot.tag', 'riot.html', 'tag', 'html']) {
             if (endsWith(filePath, '.' + ext)) {
-                return ext
+                return '.' + ext
             }
         }
         return path.extname(filePath)

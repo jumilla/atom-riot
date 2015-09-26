@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'command': 'riot:compile'
+      'label': 'Compile tag file'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Riot'
+      'submenu': [
+        {
+          'label': 'Compile'
+          'command': 'riot:compile'
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+'scopeName': 'source.riot'
+
+'fileTypes': [
+  'tag'
+  'riot.tag'
+  'riot.html'
+]
+
+'name': 'Riot'

@@ -16,7 +16,7 @@
             '1':
                 'name': 'punctuation.definition.tag.begin.html'
             '2':
-                'name': 'entity.name.tag.block.any.html.angular'
+                'name': 'entity.name.tag.block.any.html.riot'
         'end': '(>)'
         'endCaptures':
             '1':
@@ -47,7 +47,7 @@
             'name': 'punctuation.definition.tag.end.html'
         'name': 'meta.tag.block.any.html'
         'patterns': [
-          { 'include': '#angular-directive-attribute' }
+          { 'include': '#riot-directive-attribute' }
           { 'include': '#tag-stuff' }
         ]
     }
@@ -81,11 +81,11 @@
             'name': 'punctuation.definition.tag.end.html'
         'name': 'meta.tag.inline.any.html'
         'patterns': [
-          { 'include': '#angular-directive-attribute' }
+          { 'include': '#riot-directive-attribute' }
           { 'include': '#tag-stuff' }
         ]
     }
-    { 'include': '#angular-expressions' }
+    { 'include': '#riot-expressions' }
     { 'include': 'text.html.basic' }
 ]
 
@@ -94,12 +94,12 @@
         'begin': '(\\{)'
         'beginCaptures':
             '1':
-                'name': 'punctuation.definition.block.begin.angular'
+                'name': 'punctuation.definition.block.begin.riot'
         'end': '(\\})'
         'endCaptures':
             '1':
-                'name': 'punctuation.definition.block.end.angular'
-        'name': 'meta.tag.template.angular'
+                'name': 'punctuation.definition.block.end.riot'
+        'name': 'meta.tag.template.riot'
 
     'patterns': [
         { 'include': 'source.js' }

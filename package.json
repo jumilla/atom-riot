@@ -1,6 +1,6 @@
 {
   "name": "riot",
-  "main": "./lib/riot.js",
+  "main": "./lib/riot.es6",
   "version": "0.2.2",
   "description": "Riot.js auto compile.",
   "keywords": [],

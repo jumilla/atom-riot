@@ -1,7 +1,7 @@
 {
   "name": "riot",
   "main": "./lib/riot.es6",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Riot.js auto compile.",
   "keywords": [],
   "repository": "https://github.com/jumilla/atom-riot",

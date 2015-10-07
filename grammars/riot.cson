@@ -150,7 +150,7 @@
                     '1':
                         'name': 'source.smarty.embedded.html'
                     '2':
-                    'name': 'support.function.built-in.smarty'
+                        'name': 'support.function.built-in.smarty'
                 'end': '(\\{/(literal)\\})'
             }
             {
@@ -213,7 +213,7 @@
         'captures':
             '1':
                 'name': 'entity.other.attribute-name.id.html'
-                '2':
+            '2':
                 'name': 'punctuation.separator.key-value.html'
         'end': '(?<=\'|")|(?=\\s|>)'
         'name': 'meta.attribute-with-value.id.html'

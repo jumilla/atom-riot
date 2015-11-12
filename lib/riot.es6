@@ -3,11 +3,10 @@
 import fs from 'fs'
 import path from 'path'
 import { CompositeDisposable } from 'atom'
-//import mkdirp from 'mkdirp';
-//import riot from 'riot';
 import { exec, spawn } from 'child_process'
 
-const RIOT_PATH = '/usr/local/bin/riot'
+const RIOT_PATH = process.env.RIOT_PATH || '/usr/local/bin/riot'
+
 let subscriptions;
 
 export function activate() {

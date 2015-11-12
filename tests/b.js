@@ -1,4 +1,3 @@
 
-riot.tag('test-b', '', function(opts) {
-
+riot.tag2('test-b', '', '', '', function(opts) {
 });

@@ -53,9 +53,13 @@ function compileRiot(sourcePath) {
         if (error) {
             console.error(error)
 
-            atom.notifications.addError(stderr, {
-                dismissable: true,
-            })
+            atom.notifications.addError(
+                'Riot compile error',
+                {
+                    dismissable: true,
+                    detail: stdout || stderr,
+                }
+            )
 
             return
         }

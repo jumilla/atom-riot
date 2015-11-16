@@ -5,16 +5,21 @@ import path from 'path'
 import { CompositeDisposable } from 'atom'
 import { exec, spawn } from 'child_process'
 
-const RIOT_PATH = process.env.RIOT_PATH || '/usr/local/bin/riot'
-
-let subscriptions;
+let subscriptions
 
 export let config = {
     compileOnSave: {
-        title: 'Compile on Save',
+        title: 'Compile on save',
         description: 'Compile on file save.',
         type: 'boolean',
         default: true,
+    },
+
+    riotPath: {
+        title: 'Riot-CLI path',
+        description: 'Path for Global riot command.',
+        type: 'string',
+        default: process.env.RIOT_PATH || '/usr/local/bin/riot',
     },
 }
 
@@ -22,7 +27,7 @@ export function activate() {
     subscriptions = new CompositeDisposable(
         atom.commands.add('atom-text-editor', 'core:save', (event) => onCommandCompileOnSave(event.currentTarget.getModel())),
         atom.commands.add('atom-workspace', 'riot:compile', () => onCommandCompile(atom.workspace.getActiveTextEditor()))
-    );
+    )
 }
 
 export function deactivate() {
@@ -38,7 +43,7 @@ function onCommandCompileOnSave(textEditor) {
 function onCommandCompile(textEditor) {
     if (!textEditor) return
 
-    let riotGrammar = atom.grammars.grammarForScopeName('source.riot');
+    let riotGrammar = atom.grammars.grammarForScopeName('source.riot')
 
     if (textEditor.getGrammar() == riotGrammar) {
         compileRiot(textEditor.getPath())
@@ -46,7 +51,7 @@ function onCommandCompile(textEditor) {
 }
 
 function endsWith(string, suffix) {
-    var sub = string.length - suffix.length;
+    var sub = string.length - suffix.length
     return (sub >= 0) && (string.lastIndexOf(suffix) === sub)
 }
 
@@ -79,18 +84,20 @@ function compileRiot(sourcePath) {
             return
         }
 
-        console.log(stdout)
+        console.info(stdout)
 
         let destPath = sourcePath.substring(0, sourcePath.length - ext.length) + '.js'
-        atom.notifications.addSuccess(`Saved to ${destPath}`);
+        atom.notifications.addSuccess(`Saved to ${destPath}`)
     })
 }
 
 function riotCommandPath() {
     // 1. global command
-    if (fs.existsSync(RIOT_PATH)) {
-        return RIOT_PATH
+    let globalRiotPath = atom.config.get('riot.riotPath')
+    if (fs.existsSync(globalRiotPath)) {
+        return globalRiotPath
     }
+    console.warn('Global riot command not found', globalRiotPath);
 
     // 2. package local command
     let atomPackage = atom.packages.getLoadedPackage('riot')

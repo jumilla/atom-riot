@@ -9,15 +9,30 @@ const RIOT_PATH = process.env.RIOT_PATH || '/usr/local/bin/riot'
 
 let subscriptions;
 
+export let config = {
+    compileOnSave: {
+        title: 'Compile on Save',
+        description: 'Compile on file save.',
+        type: 'boolean',
+        default: true,
+    },
+}
+
 export function activate() {
     subscriptions = new CompositeDisposable(
-        atom.commands.add('atom-text-editor', 'core:save', (event) => onCommandCompile(event.currentTarget.getModel())),
+        atom.commands.add('atom-text-editor', 'core:save', (event) => onCommandCompileOnSave(event.currentTarget.getModel())),
         atom.commands.add('atom-workspace', 'riot:compile', () => onCommandCompile(atom.workspace.getActiveTextEditor()))
     );
 }
 
 export function deactivate() {
-    subscriptions.dispose();
+    subscriptions.dispose()
+}
+
+function onCommandCompileOnSave(textEditor) {
+    if (atom.config.get('riot.compileOnSave') === false) return
+
+    onCommandCompile(textEditor)
 }
 
 function onCommandCompile(textEditor) {
@@ -26,13 +41,13 @@ function onCommandCompile(textEditor) {
     let riotGrammar = atom.grammars.grammarForScopeName('source.riot');
 
     if (textEditor.getGrammar() == riotGrammar) {
-        compileRiot(textEditor.getPath());
+        compileRiot(textEditor.getPath())
     }
 }
 
 function endsWith(string, suffix) {
     var sub = string.length - suffix.length;
-    return (sub >= 0) && (string.lastIndexOf(suffix) === sub);
+    return (sub >= 0) && (string.lastIndexOf(suffix) === sub)
 }
 
 function compileRiot(sourcePath) {
